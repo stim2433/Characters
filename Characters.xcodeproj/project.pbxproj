@@ -13,6 +13,7 @@
 		1217DB9D286F67E600281687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1217DB9B286F67E600281687 /* Main.storyboard */; };
 		1217DB9F286F67EA00281687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1217DB9E286F67EA00281687 /* Assets.xcassets */; };
 		1217DBA2286F67EA00281687 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1217DBA0286F67EA00281687 /* LaunchScreen.storyboard */; };
+		1217DBAB286F698D00281687 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBAA286F698D00281687 /* Factory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1217DB9E286F67EA00281687 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1217DBA1286F67EA00281687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1217DBA3286F67EA00281687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1217DBAA286F698D00281687 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		1217DB94286F67E600281687 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				1217DBAC286F6A1800281687 /* UI */,
 				1217DBA9286F680000281687 /* App */,
 				1217DB9B286F67E600281687 /* Main.storyboard */,
 				1217DB9E286F67EA00281687 /* Assets.xcassets */,
@@ -71,8 +74,16 @@
 				1217DB95286F67E600281687 /* AppDelegate.swift */,
 				1217DB97286F67E600281687 /* SceneDelegate.swift */,
 				1217DB99286F67E600281687 /* ViewController.swift */,
+				1217DBAA286F698D00281687 /* Factory.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		1217DBAC286F6A1800281687 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1217DBAB286F698D00281687 /* Factory.swift in Sources */,
 				1217DB9A286F67E600281687 /* ViewController.swift in Sources */,
 				1217DB96286F67E600281687 /* AppDelegate.swift in Sources */,
 				1217DB98286F67E600281687 /* SceneDelegate.swift in Sources */,
