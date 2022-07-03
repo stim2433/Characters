@@ -10,7 +10,10 @@ import UIKit
 
 class Factory {
     func buildCharacters () -> UIViewController {
-        let view = ViewController()
+        let view = CharacterViewController()
+        let presenter = CharacterViewPresenter()
+        presenter.settingView(view: view)
+        view.presenter = presenter
         return view
     }
 }
