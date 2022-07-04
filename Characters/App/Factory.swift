@@ -12,7 +12,8 @@ class Factory {
     func buildCharacters () -> UIViewController {
         let view = CharacterViewController()
         let presenter = CharacterViewPresenter()
-        presenter.settingView(view: view)
+        let network = NetworckService<Endpoint>()
+        presenter.settingView(view: view, network: network)
         view.presenter = presenter
         return view
     }

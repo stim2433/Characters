@@ -24,7 +24,7 @@ class CharacterViewController: UIViewController {
         view.addSubview(tableView)
         tableView.frame = view.frame
         
-        presenter?.printStarus()
+        presenter?.getData()
     }
 }
 

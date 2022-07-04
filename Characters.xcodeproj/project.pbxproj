@@ -20,6 +20,9 @@
 		1217DBBD2870653600281687 /* CharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBBC2870653500281687 /* CharacterViewCell.swift */; };
 		1217DBBF287073B000281687 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBBE287073AF00281687 /* CharacterView.swift */; };
 		1217DBC128719C4D00281687 /* ContainerWatcheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC028719C4C00281687 /* ContainerWatcheView.swift */; };
+		1217DBC52871E58600281687 /* Networck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC42871E58600281687 /* Networck.swift */; };
+		1217DBC72872F6FD00281687 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC62872F6FD00281687 /* Service.swift */; };
+		1217DBC92872FE8D00281687 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC82872FE8D00281687 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		1217DBBC2870653500281687 /* CharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewCell.swift; sourceTree = "<group>"; };
 		1217DBBE287073AF00281687 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		1217DBC028719C4C00281687 /* ContainerWatcheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerWatcheView.swift; sourceTree = "<group>"; };
+		1217DBC42871E58600281687 /* Networck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networck.swift; sourceTree = "<group>"; };
+		1217DBC62872F6FD00281687 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		1217DBC82872FE8D00281687 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 		1217DB94286F67E600281687 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				1217DBC22871DCF700281687 /* Layar */,
 				1217DBAC286F6A1800281687 /* UI */,
 				1217DBA9286F680000281687 /* App */,
 				1217DB9B286F67E600281687 /* Main.storyboard */,
@@ -134,6 +141,24 @@
 				1217DBB8286F6BC300281687 /* CharacterModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1217DBC22871DCF700281687 /* Layar */ = {
+			isa = PBXGroup;
+			children = (
+				1217DBC32871DD1800281687 /* Networck */,
+			);
+			path = Layar;
+			sourceTree = "<group>";
+		};
+		1217DBC32871DD1800281687 /* Networck */ = {
+			isa = PBXGroup;
+			children = (
+				1217DBC42871E58600281687 /* Networck.swift */,
+				1217DBC62872F6FD00281687 /* Service.swift */,
+				1217DBC82872FE8D00281687 /* Endpoint.swift */,
+			);
+			path = Networck;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,9 +235,12 @@
 				1217DBB6286F6B2B00281687 /* CharacterViewController.swift in Sources */,
 				1217DBAB286F698D00281687 /* Factory.swift in Sources */,
 				1217DBBD2870653600281687 /* CharacterViewCell.swift in Sources */,
+				1217DBC92872FE8D00281687 /* Endpoint.swift in Sources */,
 				1217DBB3286F6B1200281687 /* CharacterPresenter.swift in Sources */,
 				1217DB9A286F67E600281687 /* ViewController.swift in Sources */,
+				1217DBC72872F6FD00281687 /* Service.swift in Sources */,
 				1217DB96286F67E600281687 /* AppDelegate.swift in Sources */,
+				1217DBC52871E58600281687 /* Networck.swift in Sources */,
 				1217DBBF287073B000281687 /* CharacterView.swift in Sources */,
 				1217DBB9286F6BC300281687 /* CharacterModel.swift in Sources */,
 				1217DBC128719C4D00281687 /* ContainerWatcheView.swift in Sources */,
