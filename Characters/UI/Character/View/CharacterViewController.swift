@@ -36,14 +36,21 @@ extension CharacterViewController: UITableViewDelegate {
 
 extension CharacterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return presenter?.dataModel?.results.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterViewCell
         
+        let data = presenter?.dataModel?.results[indexPath.row]
+        
         cell.configerationViewCell()
+        
+        cell.characterView.statusLabel.text = presenter?.test(status: data?.status ?? "test")
+        cell.characterView.titleLabel.text = data?.name
+        cell.characterView.locationLabel.text = data?.location.name
+        cell.characterView.humanLabel.text = "\(data?.species ?? "test"), \(data?.gender ?? "test")"
         
 //        cell.backgroundColor = .green
         
@@ -53,6 +60,7 @@ extension CharacterViewController: UITableViewDataSource {
 
 extension CharacterViewController: CharacterViewProtocol {
     func saccess() {
+        tableView.reloadData()
         tableView.backgroundColor = .green
     }
     

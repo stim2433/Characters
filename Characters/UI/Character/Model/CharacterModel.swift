@@ -18,6 +18,11 @@ struct ResultsData: Decodable {
     let name: String
     let status: String
     let gender: String
+    let species: String
+    let location: LocationData
 }
 
+struct LocationData: Decodable {
+    let name: String
+}
 

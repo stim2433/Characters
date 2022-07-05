@@ -21,6 +21,11 @@ class CharacterView: UIView {
         humanLabel.backgroundColor = .clear
         locationLabel.backgroundColor = .clear
         markerLocation.backgroundColor = .clear
+        
+        
+//
+//        let test = upgradeView("Alive")
+//        print (test?.rawValue)
     }
 }
 
@@ -41,7 +46,7 @@ extension CharacterView {
     
     func makeStatusLabel() -> UILabel {
         let label = UILabel()
-        label.text = "UNKNOWED"
+//        label.text = "UNKNOWED"
         label.textAlignment = .center
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false

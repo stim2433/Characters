@@ -22,7 +22,7 @@ class ContainerWatcheView: UIView {
 extension ContainerWatcheView {
     func makeWatchLabel () -> UILabel {
         let label = UILabel()
-        label.text = "Watch"
+        label.text = "Watch episodes"
         label.textColor = UIColor (red: 1, green: 0.42, blue: 0, alpha: 1)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false

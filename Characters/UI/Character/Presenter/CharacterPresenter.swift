@@ -18,6 +18,7 @@ protocol CharacterViewPresenterProtocol: AnyObject {
     func settingView (view: CharacterViewProtocol, network: NetworckService<Endpoint>)
     func printStarus ()
     func getData()
+    func test(status: String) -> String
     
     var dataModel: CharacterData? { get set }
 }
@@ -50,6 +51,11 @@ class CharacterViewPresenter: CharacterViewPresenterProtocol {
             }
             
         }
+    }
+    
+    func test (status: String) -> String {
+//        print(status)
+        return status
     }
     
 }
