@@ -9,6 +9,7 @@ import Foundation
 
 enum Endpoint {
     case region
+    case avatar (String)
 }
 
 extension Endpoint: Service {
@@ -20,6 +21,8 @@ extension Endpoint: Service {
         switch self {
         case .region:
             return "/api/character"
+        case .avatar( let index):
+            return "/api/character/avatar/\(index).jpeg"
         }
     }
     

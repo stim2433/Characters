@@ -18,9 +18,11 @@ protocol CharacterViewPresenterProtocol: AnyObject {
     func settingView (view: CharacterViewProtocol, network: NetworckService<Endpoint>)
     func printStarus ()
     func getData()
+    func getImage()
     func test(status: String) -> String
     
     var dataModel: CharacterData? { get set }
+    var dataImage: Data? { get set }
 }
 
 class CharacterViewPresenter: CharacterViewPresenterProtocol {
@@ -28,6 +30,7 @@ class CharacterViewPresenter: CharacterViewPresenterProtocol {
     var network: NetworckService<Endpoint>!
     
     var dataModel: CharacterData?
+    var dataImage: Data?
     
     func settingView(view: CharacterViewProtocol, network: NetworckService<Endpoint>) {
         self.view = view
@@ -49,7 +52,18 @@ class CharacterViewPresenter: CharacterViewPresenterProtocol {
             case .failure(let error):
                 self.view?.errors()
             }
-            
+        }
+    }
+    func getImage () {
+        network.load(service: .avatar("1")){ [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let imageData):
+                self.dataImage = imageData
+                self.view?.update()
+            case .failure(let error):
+                self.view?.errors()
+            }
         }
     }
     

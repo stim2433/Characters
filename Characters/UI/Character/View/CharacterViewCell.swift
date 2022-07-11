@@ -9,8 +9,12 @@ import UIKit
 
 class CharacterViewCell: UITableViewCell {
     
-    let avatarImage: UIImageView = {
+    var callback: ((Data?) -> ())?
+    
+    var avatarImage: UIImageView = {
         let image = UIImageView()
+//        image.sizeToFit()
+        image.clipsToBounds = true
         image.backgroundColor = .gray
         return image
     }()
@@ -28,6 +32,9 @@ class CharacterViewCell: UITableViewCell {
         avatarImage.frame = CGRect (x: frame.width / 17.83, y: frame.height / 9.5,
                                     width: frame.height / 1.26, height: frame.height / 1.26)
         avatarImage.layer.cornerRadius = avatarImage.frame.height / 3
+        
+//        avatarImage.image = UIImage(data: subscriber.imageData)
+        
         characterView.frame = CGRect (x: frame.width / 2.64, y: frame.height / 9.5,
                                       width: frame.width / 1.76, height: frame.height / 1.26)
         
@@ -35,6 +42,8 @@ class CharacterViewCell: UITableViewCell {
                                       width: characterView.frame.width / 1.90,
                                       height: characterView.frame.height / 3.42)
         containerView.layer.cornerRadius = containerView.frame.height / 2
+        
+        
         
         addSubview(avatarImage)
         addSubview(characterView)
@@ -44,4 +53,42 @@ class CharacterViewCell: UITableViewCell {
         containerView.setView()
     }
     
+    func updateStatus (stringStatus: String?) {
+        self.setNeedsLayout()
+        guard let stringStatus = stringStatus else { return }
+        
+//        updateImage()
+
+        let setStatus = SetStatus(rawValue: stringStatus)
+        switch setStatus {
+        case .alive:
+            characterView.statusLabel.backgroundColor = .green
+//            avatarImage.setNeedsLayout()
+//            print (avatarImage)
+//            containerView.layer.cornerRadius = containerView.frame.height / 2
+            print ("живой")
+        case .dead:
+            characterView.statusLabel.backgroundColor = .red
+//            containerView.layer.cornerRadius = containerView.frame.height / 2
+            print("не живой")
+        case .unknowed:
+            characterView.statusLabel.backgroundColor = .gray
+//            containerView.layer.cornerRadius = containerView.frame.height / 2
+            print("я хер его знает")
+        case .none:
+            print ("это ошибко")
+        }
+    }
+    
+    func updateImage () {
+        print(#function)
+//        print (callback)
+    }
+    
+}
+
+enum SetStatus: String {
+    case alive = "Alive"
+    case dead = "Dead"
+    case unknowed = "unknown"
 }
