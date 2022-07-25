@@ -23,6 +23,7 @@
 		1217DBC52871E58600281687 /* Networck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC42871E58600281687 /* Networck.swift */; };
 		1217DBC72872F6FD00281687 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC62872F6FD00281687 /* Service.swift */; };
 		1217DBC92872FE8D00281687 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1217DBC82872FE8D00281687 /* Endpoint.swift */; };
+		12218C66288A74A600306722 /* StatusViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12218C65288A74A600306722 /* StatusViewContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		1217DBC42871E58600281687 /* Networck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networck.swift; sourceTree = "<group>"; };
 		1217DBC62872F6FD00281687 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		1217DBC82872FE8D00281687 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		12218C65288A74A600306722 /* StatusViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				1217DBB5286F6B2B00281687 /* CharacterViewController.swift */,
+				12218C65288A74A600306722 /* StatusViewContainer.swift */,
 				1217DBBC2870653500281687 /* CharacterViewCell.swift */,
 				1217DBC028719C4C00281687 /* ContainerWatcheView.swift */,
 				1217DBBE287073AF00281687 /* CharacterView.swift */,
@@ -236,6 +239,7 @@
 				1217DBAB286F698D00281687 /* Factory.swift in Sources */,
 				1217DBBD2870653600281687 /* CharacterViewCell.swift in Sources */,
 				1217DBC92872FE8D00281687 /* Endpoint.swift in Sources */,
+				12218C66288A74A600306722 /* StatusViewContainer.swift in Sources */,
 				1217DBB3286F6B1200281687 /* CharacterPresenter.swift in Sources */,
 				1217DB9A286F67E600281687 /* ViewController.swift in Sources */,
 				1217DBC72872F6FD00281687 /* Service.swift in Sources */,

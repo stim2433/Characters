@@ -10,22 +10,15 @@ import UIKit
 class CharacterView: UIView {
     
     lazy var titleLabel = makeTitleLabel()
-    lazy var statusLabel = makeStatusLabel()
     lazy var humanLabel = makeHumanLabel()
     lazy var locationLabel = makeLocationLabel()
     lazy var markerLocation = makeMarkerLocation()
     
     func setView() {
         titleLabel.backgroundColor = .clear
-        statusLabel.backgroundColor = .clear
         humanLabel.backgroundColor = .clear
         locationLabel.backgroundColor = .clear
         markerLocation.backgroundColor = .clear
-        
-        
-//
-//        let test = upgradeView("Alive")
-//        print (test?.rawValue)
     }
 }
 
@@ -46,16 +39,18 @@ extension CharacterView {
     
     func makeStatusLabel() -> UILabel {
         let label = UILabel()
-//        label.text = "UNKNOWED"
         label.textAlignment = .center
+        label.backgroundColor = .gray
+        label.clipsToBounds = false
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         label.topAnchor.constraint(equalTo: topAnchor).isActive = true
         label.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        label.widthAnchor.constraint(equalToConstant: label.intrinsicContentSize.width / 1.21).isActive = true
+        label.widthAnchor.constraint(equalToConstant: frame.width / 2).isActive = true
         label.heightAnchor.constraint(equalToConstant: frame.height / 5).isActive = true
-        label.font = label.font.withSize(label.frame.height / 1.75)
+//        label.font = label.font.withSize(label.frame.height / 1.75)
+        label.font = label.font.withSize(14)
         return label
     }
     

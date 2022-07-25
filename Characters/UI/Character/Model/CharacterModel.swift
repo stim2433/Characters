@@ -19,7 +19,7 @@ struct ResultsData: Decodable {
     let status: String
     let gender: String
     let species: String
-    let image: String
+    var image: String
     let location: LocationData
 }
 

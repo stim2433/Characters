@@ -8,16 +8,28 @@
 import UIKit
 
 class CharacterViewCell: UITableViewCell {
-    
-    var callback: ((Data?) -> ())?
-    
-    var avatarImage: UIImageView = {
+
+    var avatarImageView: UIImageView = {
         let image = UIImageView()
-//        image.sizeToFit()
         image.clipsToBounds = true
         image.backgroundColor = .gray
         return image
     }()
+    
+    var statusViewContiner: StatusViewContainer = {
+        let view = StatusViewContainer()
+        view.clipsToBounds = true
+        view.backgroundColor = .gray
+        return view
+    }()
+    
+    var avatarImage: UIImage! {
+        didSet {
+            avatarImageView.image = avatarImage
+        }
+    }
+    
+//    let setStatus: ((String) -> Void)
     
     let containerView: ContainerWatcheView = {
         let view = ContainerWatcheView()
@@ -25,16 +37,20 @@ class CharacterViewCell: UITableViewCell {
         return view
     }()
     
-    let characterView = CharacterView()
+    let characterView: CharacterView = {
+        let view = CharacterView()
+        view.clipsToBounds = true
+//        view.statusLabel.backgroundColor = .red
+        return view
+    }()
+    
     
     func configerationViewCell () {
         
-        avatarImage.frame = CGRect (x: frame.width / 17.83, y: frame.height / 9.5,
+        avatarImageView.frame = CGRect (x: frame.width / 17.83, y: frame.height / 9.5,
                                     width: frame.height / 1.26, height: frame.height / 1.26)
-        avatarImage.layer.cornerRadius = avatarImage.frame.height / 3
-        
-//        avatarImage.image = UIImage(data: subscriber.imageData)
-        
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 3
+       
         characterView.frame = CGRect (x: frame.width / 2.64, y: frame.height / 9.5,
                                       width: frame.width / 1.76, height: frame.height / 1.26)
         
@@ -43,40 +59,50 @@ class CharacterViewCell: UITableViewCell {
                                       height: characterView.frame.height / 3.42)
         containerView.layer.cornerRadius = containerView.frame.height / 2
         
+        statusViewContiner.frame = CGRect (x: characterView.frame.width / 2, y: 0,
+                                   width: characterView.frame.width / 2, height: characterView.frame.height / 4.8)
+        statusViewContiner.layer.cornerRadius = statusViewContiner.frame.height / 2
         
+//        statusView.frame = CGRect (x: characterView.frame.width / 2, y: characterView.frame.height,
+//                                   width: characterView.frame.width / 2, height: characterView.frame.height / 4.8)
         
-        addSubview(avatarImage)
+//        characterView.statusLabel.textColor =  UIColor(red: 0.194, green: 0.625, blue: 0.086, alpha: 1)
+        
+        addSubview(avatarImageView)
         addSubview(characterView)
         characterView.addSubview(containerView)
-        
-        characterView.setView()
+        characterView.addSubview(statusViewContiner)
         containerView.setView()
+//        characterView.setView()
     }
     
-    func updateStatus (stringStatus: String?) {
-        self.setNeedsLayout()
-        guard let stringStatus = stringStatus else { return }
+    func updateStatus () {
         
-//        updateImage()
-
-        let setStatus = SetStatus(rawValue: stringStatus)
-        switch setStatus {
+        
+        let statusString = statusViewContiner.statusView.text
+        guard let statusString = statusString else { return }
+        
+        setStatus(for: statusString.lowercased())
+    }
+    
+    func setStatus (for status: String) {
+        statusViewContiner.layoutIfNeeded()
+        switch SetStatus(status) {
         case .alive:
-            characterView.statusLabel.backgroundColor = .green
-//            avatarImage.setNeedsLayout()
-//            print (avatarImage)
-//            containerView.layer.cornerRadius = containerView.frame.height / 2
-            print ("живой")
+//            characterView.setView()
+            statusViewContiner.layoutIfNeeded()
+            statusViewContiner.statusView.backgroundColor = UIColor(red: 0.78, green: 1, blue: 0.725, alpha: 1)
+            statusViewContiner.statusView.textColor =  UIColor(red: 0.194, green: 0.625, blue: 0.086, alpha: 1)
         case .dead:
-            characterView.statusLabel.backgroundColor = .red
-//            containerView.layer.cornerRadius = containerView.frame.height / 2
-            print("не живой")
-        case .unknowed:
-            characterView.statusLabel.backgroundColor = .gray
-//            containerView.layer.cornerRadius = containerView.frame.height / 2
-            print("я хер его знает")
+            statusViewContiner.layoutIfNeeded()
+            statusViewContiner.statusView.backgroundColor = UIColor(red: 1, green: 0.908, blue: 0.879, alpha: 1)
+            statusViewContiner.statusView.textColor =  UIColor(red: 0.913, green: 0.219, blue: 0, alpha: 1)
+        case .unknown:
+            statusViewContiner.layoutIfNeeded()
+            statusViewContiner.statusView.backgroundColor = UIColor(red: 0.933, green: 0.933, blue: 0.933, alpha: 1)
+            statusViewContiner.statusView.textColor =  UIColor(red: 0.629, green: 0.629, blue: 0.629, alpha: 1)
         case .none:
-            print ("это ошибко")
+            print ("none")
         }
     }
     
@@ -88,7 +114,35 @@ class CharacterViewCell: UITableViewCell {
 }
 
 enum SetStatus: String {
-    case alive = "Alive"
-    case dead = "Dead"
-    case unknowed = "unknown"
+    case alive
+    case dead
+    case unknown
+    case none
+    
+    var message: String {
+        switch self {
+        case .alive:
+            return "Status alive"
+        case .dead:
+            return "Status dead"
+        case .unknown:
+            return "Status unknown"
+        case .none:
+            return "Status none"
+            
+        }
+    }
+    
+    init (_ value: String) {
+        switch value {
+        case "alive":
+            self = .alive
+        case "dead":
+            self = .dead
+        case "unknown":
+            self = .unknown
+        default:
+            self = .none
+        }
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 protocol CharacterViewProtocol: AnyObject {
@@ -18,11 +19,12 @@ protocol CharacterViewPresenterProtocol: AnyObject {
     func settingView (view: CharacterViewProtocol, network: NetworckService<Endpoint>)
     func printStarus ()
     func getData()
-    func getImage()
-    func test(status: String) -> String
+    func getImage(strUrl: String?, index: IndexPath)
     
     var dataModel: CharacterData? { get set }
-    var dataImage: Data? { get set }
+    var imageModel: Data? { get set }
+    
+    var callBack: ((IndexPath) -> Void)! { get set }
 }
 
 class CharacterViewPresenter: CharacterViewPresenterProtocol {
@@ -30,7 +32,15 @@ class CharacterViewPresenter: CharacterViewPresenterProtocol {
     var network: NetworckService<Endpoint>!
     
     var dataModel: CharacterData?
-    var dataImage: Data?
+    var imageModel: Data?
+    var callBack: ((IndexPath) -> Void)!
+    
+    var test: ((Data) -> Void)!
+    
+    
+    var images: [Data]!
+
+    var dataModels: ((CharacterData) -> Void)?
     
     func settingView(view: CharacterViewProtocol, network: NetworckService<Endpoint>) {
         self.view = view
@@ -54,12 +64,20 @@ class CharacterViewPresenter: CharacterViewPresenterProtocol {
             }
         }
     }
-    func getImage () {
-        network.load(service: .avatar("1")){ [weak self] result in
+    
+    func getImage (strUrl: String?, index: IndexPath) {
+        
+        let testStr = strUrl?.split(separator: "/")
+        let idImage = testStr?.last
+        guard let idImage = idImage else { return }
+        
+        network.load(service: .avatar(String(idImage))){ [weak self] result in
             guard let self = self else { return }
+
             switch result {
             case .success(let imageData):
-                self.dataImage = imageData
+                self.imageModel = imageData
+                self.callBack(index)
                 self.view?.update()
             case .failure(let error):
                 self.view?.errors()
@@ -67,8 +85,10 @@ class CharacterViewPresenter: CharacterViewPresenterProtocol {
         }
     }
     
+    func update () {
+    }
+    
     func test (status: String) -> String {
-//        print(status)
         return status
     }
     

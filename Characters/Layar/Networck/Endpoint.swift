@@ -22,7 +22,7 @@ extension Endpoint: Service {
         case .region:
             return "/api/character"
         case .avatar( let index):
-            return "/api/character/avatar/\(index).jpeg"
+            return "/api/character/avatar/\(index)"
         }
     }
     
